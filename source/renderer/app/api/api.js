@@ -633,6 +633,7 @@ export default class AdaApi {
           },
         ],
         passphrase,
+        withdrawal: TransactionWithdrawal,
       };
 
       let response: Transaction;
