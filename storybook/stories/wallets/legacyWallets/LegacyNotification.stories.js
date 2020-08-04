@@ -16,7 +16,6 @@ storiesOf('Wallets|Legacy Wallets', module)
     <div>
       <LegacyNotification
         activeWalletName={text('activeWalletName', 'Josephine')}
-        onLearnMore={action('onLearnMore')}
         onTransferFunds={action('onTransferFunds')}
         hasRewardsWallets={boolean('hasRewardsWallets')}
         onWalletAdd={action('onWalletAdd')}

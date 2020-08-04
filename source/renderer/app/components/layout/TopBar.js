@@ -19,7 +19,6 @@ type Props = {
   onTransferFunds?: Function,
   onWalletAdd?: Function,
   hasRewardsWallets?: boolean,
-  onLearnMore?: Function,
   isShelleyActivated: boolean,
 };
 
@@ -34,7 +33,6 @@ export default class TopBar extends Component<Props> {
       hasRewardsWallets,
       onTransferFunds,
       onWalletAdd,
-      onLearnMore,
       isShelleyActivated,
     } = this.props;
     const { isIncentivizedTestnet } = global;
@@ -93,7 +91,6 @@ export default class TopBar extends Component<Props> {
         {hasLegacyNotification && activeWallet && (
           <LegacyNotification
             activeWalletName={activeWallet.name}
-            onLearnMore={onLearnMore}
             onTransferFunds={onTransferFundsFn}
             hasRewardsWallets={hasRewardsWallets}
             onWalletAdd={onWalletAdd}
