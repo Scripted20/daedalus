@@ -56,11 +56,6 @@ const messages = defineMessages({
       '!!!Since all of your wallets are Byron legacy wallets you will first need to create a new Shelley wallet.',
     description: 'Legacy notification description.',
   },
-  actionLearnMore: {
-    id: 'wallet.byron.notification.actionLearnMore',
-    defaultMessage: '!!!Learn more',
-    description: 'Learn more action of legacy notification.',
-  },
   actionMove: {
     id: 'wallet.byron.notification.actionMove',
     defaultMessage: '!!!Move ada to an existing wallet',
@@ -71,17 +66,10 @@ const messages = defineMessages({
     defaultMessage: '!!!Create a new wallet',
     description: 'Create a new wallet action of legacy notification.',
   },
-  learnMoreLinkUrl: {
-    id: 'wallet.byron.notification.learnMore.url',
-    defaultMessage:
-      '!!!https://iohk.zendesk.com/hc/en-us/articles/360038726373',
-    description: '"Learn more" link URL',
-  },
 });
 
 type Props = {
   activeWalletName: string,
-  onLearnMore: Function,
   onTransferFunds: Function,
   hasRewardsWallets?: boolean,
   onWalletAdd?: Function,
@@ -91,12 +79,6 @@ type Props = {
 export default class LegacyNotification extends Component<Props> {
   static contextTypes = {
     intl: intlShape.isRequired,
-  };
-
-  onLearnMore = () => {
-    const { intl } = this.context;
-    const learnMoreLinkUrl = intl.formatMessage(messages.learnMoreLinkUrl);
-    this.props.onLearnMore(learnMoreLinkUrl);
   };
 
   getValue = (
@@ -118,7 +100,7 @@ export default class LegacyNotification extends Component<Props> {
   render() {
     const { intl } = this.context;
     const { onTransferFunds, hasRewardsWallets, onWalletAdd } = this.props;
-    const { getValue, onLearnMore } = this;
+    const { getValue } = this;
 
     const moveFundsLink = (
       <Link
@@ -153,25 +135,12 @@ export default class LegacyNotification extends Component<Props> {
           <p>{description2}</p>
         </div>
         <div className={styles.actions}>
-          <ButtonLink
-            className={styles.actionLearnMore}
-            onClick={onLearnMore}
+          <Button
+            className={styles.actionMove}
+            label={buttonLabel}
+            onClick={buttonAction}
             skin={ButtonSkin}
-            label={intl.formatMessage(messages.actionLearnMore)}
-            linkProps={{
-              className: styles.externalLink,
-              hasIconBefore: false,
-              hasIconAfter: true,
-            }}
           />
-          {
-            <Button
-              className={styles.actionMove}
-              label={buttonLabel}
-              onClick={buttonAction}
-              skin={ButtonSkin}
-            />
-          }
         </div>
       </div>
     );

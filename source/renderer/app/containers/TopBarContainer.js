@@ -27,7 +27,6 @@ export default class TopBarContainer extends Component<Props> {
     const {
       currentRoute,
       environment: { isMainnet, network },
-      openExternalLink,
     } = app;
     const walletRoutesMatch = matchRoute(
       `${ROUTES.WALLETS.ROOT}/:id(*page)`,
@@ -65,7 +64,6 @@ export default class TopBarContainer extends Component<Props> {
         onTransferFunds={onTransferFunds}
         hasRewardsWallets={hasRewardsWallets}
         onWalletAdd={onWalletAdd}
-        onLearnMore={openExternalLink}
         isShelleyActivated={isShelleyActivated}
       >
         {testnetLabel}
